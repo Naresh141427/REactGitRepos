@@ -14,7 +14,7 @@ const RepositoryItem = props => {
         <img
           src="https://assets.ccbp.in/frontend/react-js/stars-count-img.png"
           className="icon"
-          alt="star"
+          alt="stars"
         />
         <p className="count">{starsCount} stars</p>
       </div>
