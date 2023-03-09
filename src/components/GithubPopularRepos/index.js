@@ -18,6 +18,7 @@ class GithubPopularRepos extends Component {
     activeLanguageId: languageFiltersData[0].id,
     reposList: [],
     isLoading: true,
+    response: true,
   }
 
   componentDidMount() {
@@ -29,11 +30,8 @@ class GithubPopularRepos extends Component {
 
     const {activeLanguageId} = this.state
     const apiUrl = `https://apis.ccbp.in/popular-repos?language=${activeLanguageId}`
-    console.log(apiUrl)
-    const options = {
-      method: 'GET',
-    }
-    const response = await fetch(apiUrl, options)
+    const response = await fetch(apiUrl)
+    console.log(response)
     if (response.ok === true) {
       const data = await response.json()
       const updateResponseData = data.popular_repos.map(eachRepo => ({
@@ -48,6 +46,8 @@ class GithubPopularRepos extends Component {
         reposList: updateResponseData,
         isLoading: false,
       })
+    } else {
+      this.setState({response: false})
     }
   }
 
@@ -73,8 +73,6 @@ class GithubPopularRepos extends Component {
 
   renderRepositoryItems = () => {
     const {reposList} = this.state
-    console.log(reposList)
-
     return (
       <ul className="repos-list">
         {reposList.map(each => (
@@ -90,14 +88,28 @@ class GithubPopularRepos extends Component {
     </div>
   )
 
+  renderFailureView = () => (
+    <div className="repos-list">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        className="failure-view"
+        alt="failure view"
+      />
+      <h1 className="failure-text">Something Went Wrong</h1>
+    </div>
+  )
+
   render() {
-    const {isLoading} = this.state
+    const {isLoading, response} = this.state
     return (
       <div className="app-container">
         <h1 className="header">Popular</h1>
         {this.renderLanguageFilterItems()}
-
-        {isLoading ? this.renderLoader() : this.renderRepositoryItems()}
+        {response ? (
+          <>{isLoading ? this.renderLoader() : this.renderRepositoryItems()}</>
+        ) : (
+          this.renderFailureView()
+        )}
       </div>
     )
   }
