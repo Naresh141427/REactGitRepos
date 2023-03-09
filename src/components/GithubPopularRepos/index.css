@@ -1,0 +1,30 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+.header {
+  color: #0f172a;
+  font-family: 'Lobster';
+  font-size: 50px;
+}
+@media screen and (max-width: 576px) {
+  .header {
+    font-size: 35px;
+  }
+}
+.tabs-list-container {
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+  list-style-type: none;
+}
+.repos-list {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+  list-style-type: none;
+  flex-wrap: wrap;
+}

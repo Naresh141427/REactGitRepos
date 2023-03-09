@@ -1,0 +1,39 @@
+.repos-item {
+  width: 300px;
+  background-color: #f8f8ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.avatar {
+  height: 90px;
+  width: 90px;
+}
+.repos-header {
+  color: #e73959;
+  font-family: 'Roboto';
+  font-size: 15px;
+}
+.counts-container {
+  width: 120px;
+  display: flex;
+  align-items: center;
+}
+.icon {
+  height: 10px;
+  width: 10px;
+  margin-right: 8px;
+}
+.count {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 700;
+}
